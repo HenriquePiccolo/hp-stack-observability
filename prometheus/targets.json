@@ -1,0 +1,18 @@
+[
+    {
+        "labels": {
+            "job": "thanos-01"
+        },
+        "targets": [
+            "thanos-01:10902"
+        ]
+    },
+    {
+        "labels": {
+            "job": "thanos-02"
+        },
+        "targets": [
+            "thanos-02:10902"
+        ]
+    }
+]
