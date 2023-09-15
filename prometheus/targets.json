@@ -14,5 +14,13 @@
         "targets": [
             "thanos-02:10902"
         ]
+    },
+    {
+        "labels": {
+            "job": "thanos-query"
+        },
+        "targets": [
+            "thanos-query:10902"
+        ]
     }
 ]

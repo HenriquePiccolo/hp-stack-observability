@@ -8,27 +8,30 @@ Neste material, você terá contato com contéudo que aborda do nível iniciante
 <p align="center"><img src="images/architecture.png" alt="architecture Overview"/>Figure 1: Architecture</p>
 
 # Pre Requisitos
-
-
+* Docker 24.0.5
 
 # Prometheus
 ### O que é Prometheus?
-Prometheus é uma aplicação open-source de monitoramento e alerta, onde coleta e armazena métricas como dados temporais.
-Seu banco de dados é TSDB (times series database), onde é armazenado as métricas, record-rules e tudo mais.
+Prometheus é uma aplicação open-source de monitoramento e alerta, que coleta e armazena métricas como dados temporais. <br />
+Seu banco de dados é TSDB (times series database), no qual são armazenadas as métricas, record-rules e tudo mais.
+
 
 
 ### Métricas e labels
-Prometheus fundamentalmente armazena todos os dados como time series (pontos de dados em ordem de tempo).
+Prometheus fundamentalmente armazena todos os dados como time series (pontos de dados em ordem de tempo).<br />
+Todo time series é unicamente identificado por nome da métrica e opcional pares de chave-valor chamados de labels. <br />
+                     ``` 
+                     api_http_requests_total{method="POST", handler="/messages"}
+                     ``` <br />
+Toda combinação de valores únicos representa um novo timeseries, que pode aumentar a quantidade de dados armazenados. Não utilize labels para armazenar dimensões com alta cardinalidade, como  user_IDs.
 
-Todo time series é unicamente identificado por nome da métrica e opicional pares de chave-valor chamados de labels.
-exemplo: api_http_requests_total{method="POST", handler="/messages"}
-
-Cardinalidade: é a quantidade de valores unicos existem. Exemplo se você tem uma label HTTP methods e tem somente GET e POST a cardinalidade será 2.
-Mas se você tem uma métrica com 2 HTTP methods, 7 HTTP paths, 5 machines e considerando que histogram tem cardinalidade 12, então teremos 2x7x5x12=840
+### Cardinalidade
+É a quantidade de valores unicos existem. Exemplo se você tem uma label HTTP methods e tem somente GET e POST a cardinalidade será 2. <br />
+Mas se você tem uma métrica com 2 HTTP methods, 7 HTTP paths, 5 machines e considerando que histogram tem cardinalidade 12, então teremos 2x7x5x12=840 <br />
 
 ### Samples
-Samples formam os dados reais do time series, cada sample consiste de:
-- um valor float64
+Samples formam os dados reais do time series, cada sample consiste de: <br />
+- um valor float64 
 - um timestamp em milisegundos
 
 <p align="center"><img src="images/prometheus_datamodel.png" alt="Prometheus Datamodel"/>Figure 2: Prometheus Datamodel</p>
@@ -36,10 +39,10 @@ Samples formam os dados reais do time series, cada sample consiste de:
 ### Tipos de métricas
 O Prometheus oferece 4 tipos de métricas.
 
-<p>Count</p>
+##### Count
 É uma métrica acumulativa que pode somente aumentar ou se reiniciado a 0 quando aplicação é reiniciada.<br />
     Pode ser utilizada para representar quantidade de requests recebidas, tarefas concluidos, erros<br />
-<p>Gauge</p> 
+##### Gauge
 É uma métrica que representa numeros que podem arbitrariamente subir ou descer.<br />
     Poder ser utilizada para mensurar valores como temperatura, uso de memória corrente<br />
 <p>Histogram</p>

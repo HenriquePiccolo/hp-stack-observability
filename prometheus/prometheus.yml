@@ -1,6 +1,8 @@
 global:
   scrape_interval:     15s
   evaluation_interval: 15s
+  external_labels:
+    cluster: treinamento
 
 rule_files:
   - "alert.rules"
@@ -18,6 +20,8 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
       - targets: ['cadvisor:8080']
+        labels: 
+          group: 'cadvisor'
   - job_name: grafana
     scrape_interval: 5s
     static_configs:
@@ -33,6 +37,10 @@ scrape_configs:
     file_sd_configs:
     - files:
       - 'targets.json'
+  - job_name: awesomesocialmedia
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['awesomesocialmedia-users:80']
   # - job_name: 'services'
   #   scrape_interval: 5s
   #   relabel_configs:

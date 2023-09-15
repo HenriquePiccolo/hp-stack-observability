@@ -1,6 +1,21 @@
 version: "3.8"
 
 services:
+  awesomesocialmedia:
+    container_name: awesomesocialmedia-users
+    image: awesomesocialmedia-users
+    ports:
+      - '5001:80'
+      - '5002:443'
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 200M
+        reservations:
+          cpus: '0.25'
+          memory: 20M
   grafana:
     deploy:
       replicas: 1
@@ -12,6 +27,7 @@ services:
           cpus: '0.25'
           memory: 20M
     image: grafana/grafana-oss
+    container_name: grafana
     ports:
       - '3000:3000'
     volumes:
@@ -54,7 +70,9 @@ services:
       - 9100
   
   cadvisor:
-    image: gcr.io/cadvisor/cadvisor:latest
+    image: gcr.io/cadvisor/cadvisor:v0.47.2
+    entrypoint: ["/usr/bin/cadvisor","-port", "8080", "-store_container_labels", "false", "-prometheusEndpoint", "/metrics", "-whitelisted_container_labels", "electron_task_container,electron_task_hostname,electron_task_id"]
+    privileged: true
     container_name: cadvisor
     volumes:
     - /:/rootfs:ro
