@@ -142,3 +142,9 @@ groups:
 https://www.robustperception.io/how-does-a-prometheus-histogram-work/
 https://grafana.com/blog/2022/03/01/how-summary-metrics-work-in-prometheus/
 https://www.robustperception.io/cardinality-is-key/
+
+**Aplicações**
+grafana: http://localhost:3000
+prometheus: http://localhost:9090
+thanos: http://localhost:10902
+cadbisor: http://localhost:8080
