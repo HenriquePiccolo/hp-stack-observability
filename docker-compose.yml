@@ -2,13 +2,13 @@ version: "3.8"
 
 services:
   awesomesocialmedia:
-    container_name: awesomesocialmedia-users
+    container_name: awesomesocialmedia-usersss
     image: awesomesocialmedia-users
     ports:
       - '5001:80'
       - '5002:443'
     deploy:
-      replicas: 1
+      replicas: 0
       resources:
         limits:
           cpus: '0.5'
@@ -42,7 +42,7 @@ services:
     ports:
       - '9090:9090'
     volumes:
-      - prometheus_data:/promet'heus
+      - prometheus_data:/prometheus
       - ./prometheus:/etc/prometheus
   
   alertmanager:

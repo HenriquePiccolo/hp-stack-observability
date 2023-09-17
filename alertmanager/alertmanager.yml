@@ -11,4 +11,5 @@ receivers:
       - send_resolved: true
         text: "{{ .CommonAnnotations.description }}"
         channel: '#alertmanager'
-        api_url: 'https://hooks.slack.com/services/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'
+        ## TBD: token slack
+        api_url: 'https://hooks.slack.com/services/'

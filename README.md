@@ -7,8 +7,6 @@ Neste material, você terá contato com contéudo que aborda do nível iniciante
 
 <p align="center"><img src="images/architecture.png" alt="architecture Overview"/>Figure 1: Architecture</p>
 
-# Pre Requisitos
-* Docker 24.0.5
 
 # Prometheus
 ### O que é Prometheus?
@@ -88,8 +86,6 @@ by (le)
 É uma combinação de outros tipos de métricas. Um summary consiste em dois contadores, e opcionalmente, alguns medidores.
 São utilizadas para rastrear o tamanho dos eventos, geralmente quanto tempo eles levam.
 
-
-
 ### Query
 Prometheus possui sua própria linguagem chamada PromQL.
 https://prometheus.io/docs/prometheus/latest/querying/functions/
@@ -138,13 +134,26 @@ groups:
 ```
 
 
+## Pré Requisto
+**Docker:** > 24.0.5
+
+## Getting Started
+Execute o comando abaixo 
+```bash
+docker compose up -d
+```
+
+**URLs**
+Grafana: http://localhost:3000 <br />
+Prometheus: http://localhost:9090 <br />
+Thanos: http://localhost:10902 <br />
+Cadvisor: http://localhost:8080 <br />
+Alertmanager: http://localhost:9093 <br />
+
 # Links
+https://prometheus.io/docs/prometheus/latest/querying/functions/
 https://www.robustperception.io/how-does-a-prometheus-histogram-work/
 https://grafana.com/blog/2022/03/01/how-summary-metrics-work-in-prometheus/
 https://www.robustperception.io/cardinality-is-key/
 
-**Aplicações**
-grafana: http://localhost:3000
-prometheus: http://localhost:9090
-thanos: http://localhost:10902
-cadbisor: http://localhost:8080
+
